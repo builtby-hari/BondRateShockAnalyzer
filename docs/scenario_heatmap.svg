@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="Scenario P&amp;L Heatmap ($mm)">
+<rect width="760" height="440" fill="#ffffff"/>
+<text x="380.0" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#334155" font-family="Helvetica, Arial, sans-serif">Non-Parallel Scenario P&amp;L by Bond ($mm)</text>
+<text x="224.3" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">UST-2Y-like</text>
+<text x="302.9" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">UST-3Y-like</text>
+<text x="381.4" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">UST-5Y-like</text>
+<text x="460.0" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">Corp-7Y-like</text>
+<text x="538.6" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">UST-10Y-like</text>
+<text x="617.1" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">Corp-20Y-like</text>
+<text x="695.7" y="60" text-anchor="middle" font-size="10" fill="#334155" font-family="Helvetica, Arial, sans-serif">UST-30Y-like</text>
+<text x="175" y="102.0" text-anchor="end" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Parallel +100bp</text>
+<rect x="187.0" y="72" width="74.6" height="52" rx="4" fill="#dde2e8"/>
+<text x="224.3" y="102.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.19</text>
+<rect x="265.6" y="72" width="74.6" height="52" rx="4" fill="#d8dee5"/>
+<text x="302.9" y="102.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.22</text>
+<rect x="344.1" y="72" width="74.6" height="52" rx="4" fill="#9ba7b8"/>
+<text x="381.4" y="102.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.64</text>
+<rect x="422.7" y="72" width="74.6" height="52" rx="4" fill="#c8cfd9"/>
+<text x="460.0" y="102.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.33</text>
+<rect x="501.3" y="72" width="74.6" height="52" rx="4" fill="#76879e"/>
+<text x="538.6" y="102.0" text-anchor="middle" font-size="12" fill="#ffffff" font-family="Helvetica, Arial, sans-serif">-0.89</text>
+<rect x="579.9" y="72" width="74.6" height="52" rx="4" fill="#adb8c6"/>
+<text x="617.1" y="102.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.51</text>
+<rect x="658.4" y="72" width="74.6" height="52" rx="4" fill="#4a607e"/>
+<text x="695.7" y="102.0" text-anchor="middle" font-size="12" fill="#ffffff" font-family="Helvetica, Arial, sans-serif">-1.19</text>
+<text x="175" y="158.0" text-anchor="end" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Parallel -100bp</text>
+<rect x="187.0" y="128" width="74.6" height="52" rx="4" fill="#dbf2f1"/>
+<text x="224.3" y="158.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.19</text>
+<rect x="265.6" y="128" width="74.6" height="52" rx="4" fill="#d6f0ef"/>
+<text x="302.9" y="158.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.23</text>
+<rect x="344.1" y="128" width="74.6" height="52" rx="4" fill="#91dcd5"/>
+<text x="381.4" y="158.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.68</text>
+<rect x="422.7" y="128" width="74.6" height="52" rx="4" fill="#c2eae8"/>
+<text x="460.0" y="158.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.35</text>
+<rect x="501.3" y="128" width="74.6" height="52" rx="4" fill="#62cfc3"/>
+<text x="538.6" y="158.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.98</text>
+<rect x="579.9" y="128" width="74.6" height="52" rx="4" fill="#9cdfd9"/>
+<text x="617.1" y="158.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.60</text>
+<rect x="658.4" y="128" width="74.6" height="52" rx="4" fill="#14b8a6"/>
+<text x="695.7" y="158.0" text-anchor="middle" font-size="12" fill="#ffffff" font-family="Helvetica, Arial, sans-serif">1.49</text>
+<text x="175" y="214.0" text-anchor="end" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Bear steepener</text>
+<rect x="187.0" y="184" width="74.6" height="52" rx="4" fill="#f0f3f6"/>
+<text x="224.3" y="214.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.06</text>
+<rect x="265.6" y="184" width="74.6" height="52" rx="4" fill="#eceff3"/>
+<text x="302.9" y="214.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.08</text>
+<rect x="344.1" y="184" width="74.6" height="52" rx="4" fill="#c4ccd6"/>
+<text x="381.4" y="214.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.36</text>
+<rect x="422.7" y="184" width="74.6" height="52" rx="4" fill="#d8dde4"/>
+<text x="460.0" y="214.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.22</text>
+<rect x="501.3" y="184" width="74.6" height="52" rx="4" fill="#8897ab"/>
+<text x="538.6" y="214.0" text-anchor="middle" font-size="12" fill="#ffffff" font-family="Helvetica, Arial, sans-serif">-0.77</text>
+<rect x="579.9" y="184" width="74.6" height="52" rx="4" fill="#b6c0cd"/>
+<text x="617.1" y="214.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.45</text>
+<rect x="658.4" y="184" width="74.6" height="52" rx="4" fill="#5a6e89"/>
+<text x="695.7" y="214.0" text-anchor="middle" font-size="12" fill="#ffffff" font-family="Helvetica, Arial, sans-serif">-1.09</text>
+<text x="175" y="270.0" text-anchor="end" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Bull flattener</text>
+<rect x="187.0" y="240" width="74.6" height="52" rx="4" fill="#e8f5f6"/>
+<text x="224.3" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.10</text>
+<rect x="265.6" y="240" width="74.6" height="52" rx="4" fill="#e7f5f6"/>
+<text x="302.9" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.11</text>
+<rect x="344.1" y="240" width="74.6" height="52" rx="4" fill="#cfeeed"/>
+<text x="381.4" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.27</text>
+<rect x="422.7" y="240" width="74.6" height="52" rx="4" fill="#e7f5f6"/>
+<text x="460.0" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.11</text>
+<rect x="501.3" y="240" width="74.6" height="52" rx="4" fill="#dbf2f1"/>
+<text x="538.6" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.19</text>
+<rect x="579.9" y="240" width="74.6" height="52" rx="4" fill="#eaf6f7"/>
+<text x="617.1" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.09</text>
+<rect x="658.4" y="240" width="74.6" height="52" rx="4" fill="#e3f4f4"/>
+<text x="695.7" y="270.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.14</text>
+<text x="175" y="326.0" text-anchor="end" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Front-end shock +50bp</text>
+<rect x="187.0" y="296" width="74.6" height="52" rx="4" fill="#eceff3"/>
+<text x="224.3" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.08</text>
+<rect x="265.6" y="296" width="74.6" height="52" rx="4" fill="#ecf0f4"/>
+<text x="302.9" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.08</text>
+<rect x="344.1" y="296" width="74.6" height="52" rx="4" fill="#e5e9ee"/>
+<text x="381.4" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.13</text>
+<rect x="422.7" y="296" width="74.6" height="52" rx="4" fill="#f1f4f7"/>
+<text x="460.0" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.05</text>
+<rect x="501.3" y="296" width="74.6" height="52" rx="4" fill="#f1f4f7"/>
+<text x="538.6" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.05</text>
+<rect x="579.9" y="296" width="74.6" height="52" rx="4" fill="#f5f8fa"/>
+<text x="617.1" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">-0.02</text>
+<rect x="658.4" y="296" width="74.6" height="52" rx="4" fill="#f8fafc"/>
+<text x="695.7" y="326.0" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Helvetica, Arial, sans-serif">0.00</text>
+<rect x="185" y="372" width="14" height="14" rx="3" fill="#1f3a5f"/>
+<text x="205" y="383" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Loss</text>
+<rect x="265" y="372" width="14" height="14" rx="3" fill="#14b8a6"/>
+<text x="285" y="383" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Gain</text>
+<text x="345" y="383" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Darker cells show larger moves. Each bond is fully repriced at its base spread.</text>
+</svg>

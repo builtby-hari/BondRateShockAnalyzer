@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" width="1200" height="240" role="img" aria-label="Bond Rate Shock Analyzer banner">
+<text x="60" y="108" font-size="52" font-weight="bold" letter-spacing="3" fill="#60a5fa" font-family="Helvetica, Arial, sans-serif">Bond Rate Shock Analyzer</text>
+<text x="60" y="156" font-size="24" fill="#e2e8f0" font-family="Helvetica, Arial, sans-serif">Bond Portfolio P&amp;L Under Rate Shocks, with Key-Rate DV01</text>
+<rect x="60" y="186" width="1080" height="1.5" fill="#2dd4bf" opacity="0.5"/>
+<rect x="60" y="184" width="120" height="4" fill="#2dd4bf"/>
+</svg>

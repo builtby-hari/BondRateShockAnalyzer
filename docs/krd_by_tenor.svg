@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="Key-Rate DV01 by Tenor ($ per +1bp)">
+<rect width="760" height="440" fill="#ffffff"/>
+<text x="380.0" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#334155" font-family="Helvetica, Arial, sans-serif">Key-Rate DV01 by Tenor ($ per +1bp)</text>
+<line x1="85" x2="730" y1="375.0" y2="375.0" stroke="#cbd5e1"/>
+<text x="77" y="379.0" text-anchor="end" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">0</text>
+<line x1="85" x2="730" y1="267.3" y2="267.3" stroke="#cbd5e1"/>
+<text x="77" y="271.3" text-anchor="end" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">5,000</text>
+<line x1="85" x2="730" y1="159.6" y2="159.6" stroke="#cbd5e1"/>
+<text x="77" y="163.6" text-anchor="end" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">10,000</text>
+<line x1="85" x2="85" y1="55" y2="375" stroke="#334155"/>
+<line x1="85" x2="730" y1="375" y2="375" stroke="#334155"/>
+<text x="407.5" y="422" text-anchor="middle" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Par-Curve Tenor</text>
+<text transform="translate(18 215.0) rotate(-90)" text-anchor="middle" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">DV01 ($)</text>
+<rect x="99.3" y="374.9" width="43.0" height="0.5" fill="#1f3a5f"/>
+<text x="120.8" y="368.9" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">2</text>
+<text x="120.8" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">0.5y</text>
+<rect x="171.0" y="374.8" width="43.0" height="0.5" fill="#1f3a5f"/>
+<text x="192.5" y="368.8" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">8</text>
+<text x="192.5" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">1y</text>
+<rect x="242.7" y="333.9" width="43.0" height="41.1" fill="#1f3a5f"/>
+<text x="264.2" y="327.9" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">1,907</text>
+<text x="264.2" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">2y</text>
+<rect x="314.3" y="326.4" width="43.0" height="48.6" fill="#1f3a5f"/>
+<text x="335.8" y="320.4" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">2,254</text>
+<text x="335.8" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">3y</text>
+<rect x="386.0" y="231.3" width="43.0" height="143.7" fill="#1f3a5f"/>
+<text x="407.5" y="225.3" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">6,669</text>
+<text x="407.5" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">5y</text>
+<rect x="457.7" y="301.6" width="43.0" height="73.4" fill="#1f3a5f"/>
+<text x="479.2" y="295.6" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">3,408</text>
+<text x="479.2" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">7y</text>
+<rect x="529.3" y="168.2" width="43.0" height="206.8" fill="#1f3a5f"/>
+<text x="550.8" y="162.2" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">9,599</text>
+<text x="550.8" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">10y</text>
+<rect x="601.0" y="263.9" width="43.0" height="111.1" fill="#1f3a5f"/>
+<text x="622.5" y="257.9" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">5,155</text>
+<text x="622.5" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">20y</text>
+<rect x="672.7" y="89.3" width="43.0" height="285.7" fill="#1f3a5f"/>
+<text x="694.2" y="83.3" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">13,263</text>
+<text x="694.2" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">30y</text>
+</svg>

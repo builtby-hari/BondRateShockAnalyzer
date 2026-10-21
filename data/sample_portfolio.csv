@@ -1,0 +1,8 @@
+id,par,coupon_pct,maturity_yrs,frequency,yield_pct
+UST-2Y-like,10000000,4.750,2,2,4.77
+UST-3Y-like,8000000,4.875,3,2,4.85
+UST-5Y-like,15000000,4.875,5,2,4.94
+Corp-7Y-like,6000000,5.875,7,2,5.94
+UST-10Y-like,12000000,5.125,10,2,5.15
+Corp-20Y-like,5000000,6.500,20,2,6.63
+UST-30Y-like,9000000,5.500,30,2,5.48

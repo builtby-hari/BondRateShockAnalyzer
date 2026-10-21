@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-label="US Treasury Par and Zero Curve (%)">
+<rect width="760" height="440" fill="#ffffff"/>
+<text x="380.0" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#334155" font-family="Helvetica, Arial, sans-serif">US Treasury Par and Zero Curve (%)</text>
+<line x1="85" x2="730" y1="318.5" y2="318.5" stroke="#cbd5e1"/>
+<text x="77" y="322.5" text-anchor="end" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">4.5%</text>
+<line x1="85" x2="730" y1="224.4" y2="224.4" stroke="#cbd5e1"/>
+<text x="77" y="228.4" text-anchor="end" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">5.0%</text>
+<line x1="85" x2="730" y1="130.3" y2="130.3" stroke="#cbd5e1"/>
+<text x="77" y="134.3" text-anchor="end" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">5.5%</text>
+<line x1="85.0" x2="85.0" y1="375" y2="380" stroke="#334155"/>
+<text x="85.0" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">0</text>
+<line x1="192.5" x2="192.5" y1="375" y2="380" stroke="#334155"/>
+<text x="192.5" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">5</text>
+<line x1="300.0" x2="300.0" y1="375" y2="380" stroke="#334155"/>
+<text x="300.0" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">10</text>
+<line x1="407.5" x2="407.5" y1="375" y2="380" stroke="#334155"/>
+<text x="407.5" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">15</text>
+<line x1="515.0" x2="515.0" y1="375" y2="380" stroke="#334155"/>
+<text x="515.0" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">20</text>
+<line x1="622.5" x2="622.5" y1="375" y2="380" stroke="#334155"/>
+<text x="622.5" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">25</text>
+<line x1="730.0" x2="730.0" y1="375" y2="380" stroke="#334155"/>
+<text x="730.0" y="394" text-anchor="middle" font-size="11" fill="#334155" font-family="Helvetica, Arial, sans-serif">30</text>
+<line x1="85" x2="85" y1="55" y2="375" stroke="#334155"/>
+<line x1="85" x2="730" y1="375" y2="375" stroke="#334155"/>
+<text x="407.5" y="422" text-anchor="middle" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Maturity (Years)</text>
+<text transform="translate(18 215.0) rotate(-90)" text-anchor="middle" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Yield (%)</text>
+<polyline points="95.8,343.0 106.5,318.5 117.2,293.1 128.0,267.7 138.8,260.2 149.5,252.6 160.2,248.4 171.0,244.2 181.8,239.9 192.5,235.7 203.2,231.0 214.0,226.3 224.8,221.6 235.5,216.9 246.2,213.4 257.0,210.0 267.8,206.5 278.5,203.1 289.2,199.6 300.0,196.2 310.8,192.6 321.5,189.0 332.2,185.4 343.0,181.9 353.8,178.3 364.5,174.7 375.2,171.1 386.0,167.6 396.8,164.0 407.5,160.4 418.3,156.8 429.0,153.3 439.8,149.7 450.5,146.1 461.2,142.5 472.0,139.0 482.8,135.4 493.5,131.8 504.2,128.2 515.0,124.6 525.8,125.1 536.5,125.6 547.2,126.1 558.0,126.5 568.8,127.0 579.5,127.5 590.2,127.9 601.0,128.4 611.8,128.9 622.5,129.4 633.2,129.8 644.0,130.3 654.8,130.8 665.5,131.2 676.2,131.7 687.0,132.2 697.8,132.6 708.5,133.1 719.2,133.6 730.0,134.1" fill="none" stroke="#1f3a5f" stroke-width="2.2"/>
+<polyline points="95.8,343.0 106.5,318.3 117.2,292.3 128.0,266.2 138.8,258.6 149.5,250.8 160.2,246.5 171.0,242.1 181.8,237.7 192.5,233.1 203.2,228.0 214.0,222.8 224.8,217.6 235.5,212.3 246.2,208.5 257.0,204.5 267.8,200.6 278.5,196.6 289.2,192.5 300.0,188.4 310.8,184.0 321.5,179.6 332.2,175.2 343.0,170.6 353.8,166.0 364.5,161.4 375.2,156.7 386.0,151.9 396.8,147.0 407.5,142.0 418.3,137.0 429.0,131.9 439.8,126.7 450.5,121.5 461.2,116.1 472.0,110.6 482.8,105.1 493.5,99.4 504.2,93.6 515.0,87.7 525.8,89.5 536.5,91.3 547.2,93.0 558.0,94.7 568.8,96.4 579.5,98.0 590.2,99.7 601.0,101.2 611.8,102.8 622.5,104.4 633.2,105.9 644.0,107.4 654.8,108.9 665.5,110.4 676.2,111.9 687.0,113.4 697.8,114.9 708.5,116.4 719.2,117.8 730.0,119.3" fill="none" stroke="#14b8a6" stroke-width="2.2" stroke-dasharray="7 4"/>
+<circle cx="95.8" cy="343.0" r="3.4" fill="#1f3a5f"/>
+<circle cx="106.5" cy="318.5" r="3.4" fill="#1f3a5f"/>
+<circle cx="128.0" cy="267.7" r="3.4" fill="#1f3a5f"/>
+<circle cx="149.5" cy="252.6" r="3.4" fill="#1f3a5f"/>
+<circle cx="192.5" cy="235.7" r="3.4" fill="#1f3a5f"/>
+<circle cx="235.5" cy="216.9" r="3.4" fill="#1f3a5f"/>
+<circle cx="300.0" cy="196.2" r="3.4" fill="#1f3a5f"/>
+<circle cx="515.0" cy="124.6" r="3.4" fill="#1f3a5f"/>
+<circle cx="730.0" cy="134.1" r="3.4" fill="#1f3a5f"/>
+<line x1="99" x2="113" y1="66" y2="66" stroke="#1f3a5f" stroke-width="3"/>
+<text x="119" y="70" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Par Yield (Dots at Curve Tenors)</text>
+<line x1="99" x2="113" y1="84" y2="84" stroke="#14b8a6" stroke-width="3" stroke-dasharray="7 4"/>
+<text x="119" y="88" font-size="12" fill="#334155" font-family="Helvetica, Arial, sans-serif">Zero Rate, Bootstrapped</text>
+</svg>
