@@ -8,3 +8,4 @@ __pycache__/
 .vscode/
 output/
 !data/treasury_par_curve.csv
+!data/sample_balance_sheet.csv

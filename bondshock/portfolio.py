@@ -23,6 +23,11 @@ def load_portfolio(path):
                               int(row["frequency"]), float(row["yield_pct"]) / 100))
     if not bonds:
         raise ValueError("portfolio CSV has no bonds")
+    seen = set()
+    for b in bonds:
+        if b.id in seen:
+            raise ValueError(f"portfolio CSV has duplicate bond id {b.id!r}")
+        seen.add(b.id)
     return bonds
 
 
@@ -87,6 +92,8 @@ def run_shocks(bonds, shocks=SHOCKS_BP, tenors=KEY_TENORS):
 
 
 def summary(bonds):
+    if not bonds:
+        raise ValueError("no bonds")
     mv = portfolio_mv(bonds)
     dur = sum(market_value(b) * modified_duration(b) for b in bonds) / mv
     cvx = sum(market_value(b) * convexity(b) for b in bonds) / mv

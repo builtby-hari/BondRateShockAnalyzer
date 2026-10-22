@@ -199,6 +199,28 @@ def krd_chart(krd, dark=False):
     return c.svg()
 
 
+def eve_chart(rows, dark=False):
+    """Change in EVE by scenario: rows are (scenario, EVE, delta EVE, delta as % of Tier 1)."""
+    th = THEMES[dark]
+    cats = [r[0] for r in rows]
+    vals = [r[2] for r in rows]
+    lo, hi = _span(vals)
+    c = Chart(th, "Change in EVE by Scenario ($mm)", "Scenario", "Delta EVE ($mm)", 0, len(cats), lo, hi,
+              xticks=[])
+    gw = (W - L - R) / len(cats)
+    bw = gw * 0.6
+    for i, (cat, v) in enumerate(zip(cats, vals)):
+        cx = L + gw * (i + 0.5)
+        y0, y1 = sorted((c.y(0), c.y(v)))
+        c.p.append(f'<rect x="{cx-bw/2:.1f}" y="{y0:.1f}" width="{bw:.1f}" height="{max(y1-y0, 0.5):.1f}" '
+                   f'fill="{th["navy"] if v >= 0 else th["teal"]}"/>')
+        c.p.append(f'<text x="{cx:.1f}" y="{(y0-6 if v >= 0 else y1+14):.1f}" text-anchor="middle" '
+                   f'font-size="11" fill="{th["text"]}" {FONT}>{_mm(v)}</text>')
+        c.p.append(f'<text x="{cx:.1f}" y="{H-B+19}" text-anchor="middle" font-size="10" fill="{th["text"]}" '
+                   f'{FONT}>{escape(cat)}</text>')
+    return c.svg()
+
+
 def curve_chart(tenors, par, dark=False):
     """Par yields (dots at the input tenors, line between them) and bootstrapped zero rates."""
     th = THEMES[dark]
@@ -317,6 +339,13 @@ def sample_output_text():
     cli = os.path.join(ROOT, "cli.py")
     out = subprocess.run([sys.executable, cli, "--curve"], capture_output=True, text=True, check=True)
     return out.stdout
+
+
+def write_eve_charts(outdir, rows):
+    """Write eve_by_scenario.svg and eve_by_scenario-dark.svg. Returns the files written."""
+    os.makedirs(outdir, exist_ok=True)
+    return [_write(os.path.join(outdir, f"eve_by_scenario{'-dark' if d else ''}.svg"), eve_chart(rows, d))
+            for d in (False, True)]
 
 
 def write_all(outdir, bonds, rows, sample_text=None, curve_path=DEFAULT_CURVE):
