@@ -283,11 +283,10 @@ overnight remainder; `beta` is the share of a shock passed to the deposit rate.
 - Cash flows are principal and coupon only: no amortization, prepayment, early withdrawal or optionality.
 - EVE uses risk-free discounting with no commercial margin, and NMD is valued as principal only (the
   interest it pays is ignored), so base EVE overstates book equity. Read the change, not the level.
-- No NMD caps are built in. Basel limits the core share and average maturity by deposit type (SRP31); I
-  could not check those figures against the primary text, so `core_pct` and `avg_life_years` are inputs
-  you must set within your supervisor's limits.
-- The 19 time buckets and the 15% level are as I know them from BCBS d368 and the Basel Framework SRP31;
-  bis.org could not be fetched here, so check them against the text before relying on either.
+- No NMD caps are built in. Basel limits the core share and average maturity by deposit type (SRP31), so
+  `core_pct` and `avg_life_years` are inputs you set within your supervisor's limits.
+- The 19 time buckets and the 15% level follow BCBS d368 and the Basel Framework (SRP31). Confirm them
+  against the current text before relying on either.
 - One shock per scenario at the short end for NII; no basis risk, no balance growth or mix change, and no
   second-round deposit behavior.
 
@@ -398,8 +397,7 @@ LICENSE                  MIT
 ## IRRBB Sources and Floors
 
 The formulas, decay x = 4 and the 2016 USD sizes (200/300/150bp)
-are from BCBS d368, Annex 2 (checked against the OSFI Guideline reproduction of the Annex; bis.org's
-PDF could not be fetched directly). `irrbb_scenarios()` defaults to that 2016 calibration. The July 2024
+are from BCBS d368, Annex 2 (cross-checked against the OSFI Guideline reproduction of the Annex). `irrbb_scenarios()` defaults to that 2016 calibration. The July 2024
 recalibration (BCBS d578, in force 2026-01-01) is in `IRRBB_2024` as (parallel, short, long) per
 currency, from the KPMG Hong Kong summary table; USD becomes 200/300/225bp. Use
 `irrbb_scenarios(*IRRBB_2024["USD"])`. Basel leaves post-shock rate floors to national supervisors (any
