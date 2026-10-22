@@ -143,6 +143,13 @@ def outlier(rows, threshold_pct=OUTLIER_PCT):
     return [r[0] for r in rows if -r[3] > threshold_pct]
 
 
+def outlier_test(rows, threshold_pct=OUTLIER_PCT):
+    """(worst scenario, its delta EVE as % of Tier 1, "PASS" or "BREACH") for the largest EVE loss
+    across the scenarios, against threshold_pct of Tier 1 (BCBS d368 paragraph 88)."""
+    name, _, _, pct = min(rows, key=lambda r: r[3])
+    return name, pct, "BREACH" if -pct > threshold_pct else "PASS"
+
+
 def nii(lines, shift_bp):
     """12-month net interest income with a constant balance sheet and an instant shock of `shift_bp`.
 

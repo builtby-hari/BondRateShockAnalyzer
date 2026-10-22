@@ -12,6 +12,18 @@ A dependency-free Python tool that measures how a portfolio of fixed-rate bullet
 
 Standard library only (Python 3.9+). No `pip install` needed.
 
+**Why it matters for bank treasury and FIG:** rate moves hit a bank's bond book and its balance sheet at once, and duration alone understates the loss on big shocks.
+This shows the full-repricing P&L, where on the curve the risk sits, and the Basel IRRBB EVE outlier test (PASS or BREACH against 15% of Tier 1) that supervisors use to flag banks.
+
+## Portfolio P&L Under Parallel Shocks
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/pnl_vs_shock-dark.svg">
+  <img alt="Portfolio P&L vs Parallel Yield Shock: Full Repricing, Duration Only, and Duration Plus Convexity" src="docs/pnl_vs_shock.svg" width="100%">
+</picture>
+
+*Full repricing against the duration-only and duration + convexity approximations, for a 7-bond sample portfolio.*
+
 ## Contents
 
 - [Hero Chart](#portfolio-pl-under-parallel-shocks)
@@ -30,15 +42,6 @@ Standard library only (Python 3.9+). No `pip install` needed.
 - [IRRBB Sources and Floors](#irrbb-sources-and-floors)
 - [License](#license)
 - [Glossary](#glossary)
-
-## Portfolio P&L Under Parallel Shocks
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/pnl_vs_shock-dark.svg">
-  <img alt="Portfolio P&L vs Parallel Yield Shock: Full Repricing, Duration Only, and Duration Plus Convexity" src="docs/pnl_vs_shock.svg" width="100%">
-</picture>
-
-*Full repricing against the duration-only and duration + convexity approximations, for a 7-bond sample portfolio.*
 
 ## Results at a Glance
 
@@ -79,7 +82,7 @@ python3 cli.py                                    # sample portfolio, -300..+300
 python3 cli.py --portfolio my_bonds.csv --step 25 --max-shock 200
 python3 cli.py --csv shocks.csv --charts docs     # write CSV and SVG charts (light and dark)
 python3 cli.py --curve                            # add curve-based key-rate DV01 and scenarios
-python3 cli.py --curve --irrbb                    # also the six Basel IRRBB shock scenarios (USD)
+python3 cli.py --curve --irrbb                    # also the six Basel IRRBB shock scenarios (2024 USD; --currency to change)
 python3 cli.py --curve --irrbb --floor            # same, with the EBA 2018 rate floor (notes where it binds)
 python3 cli.py --balance-sheet data/sample_balance_sheet.csv --tier1 90000000   # bank EVE and NII
 python3 fetch_curve.py                            # refresh data/treasury_par_curve.csv from FRED
@@ -253,7 +256,7 @@ python3 cli.py --balance-sheet data/sample_balance_sheet.csv --tier1 90000000
 python3 cli.py --balance-sheet my_bank.csv --tier1 90000000 --curve my_curve.csv --floor --charts docs
 ```
 
-`--currency` picks the 2024 Basel calibration (default USD), `--floor` applies the EBA floor, and
+`--currency` picks the 2024 Basel calibration (default USD; it also sets the bond-level `--irrbb` shocks), `--floor` applies the EBA floor, and
 `--outlier-pct` changes the screen threshold. `data/sample_balance_sheet.csv` is illustrative: round
 numbers for a made-up bank, not real data, with Tier 1 given on the command line.
 
@@ -271,9 +274,11 @@ overnight remainder; `beta` is the share of a shock passed to the deposit rate.
    under each of the six shocks (the existing `irrbb_scenarios`, with the optional floor). Delta EVE is
    shown in dollars and as a percent of Tier 1. A floating line is valued as its next coupon plus par at
    the reset.
-3. Outlier check: flags any scenario where the EVE loss exceeds 15% of Tier 1, the supervisory outlier
-   test level in the Basel Framework (SRP31, from BCBS d368). It is a screen, not advice, and the
-   threshold is an input.
+3. Outlier test: takes the worst Delta EVE across the six Basel scenarios, divides by Tier 1 and prints
+   **PASS** or **BREACH** against 15%, naming the scenario. This is the supervisory outlier test in
+   [BCBS d368](https://www.bis.org/bcbs/publ/d368.pdf), paragraph 88 (Principle 12): the bank's maximum EVE decline under the six
+   prescribed shocks of Annex 2, compared with 15% of Tier 1. When more than one scenario breaches, all
+   are listed. It is a screen, not advice, and `--outlier-pct` changes the threshold.
 4. NII: constant balance sheet over 12 months with an instant shock. Floating lines reprice at their
    reset dates, fixed lines roll once at maturity into the same coupon plus the shock, and NMD rates move
    by beta times the shock from day one. The shock used is the scenario value at the shortest curve tenor.
@@ -283,10 +288,13 @@ overnight remainder; `beta` is the share of a shock passed to the deposit rate.
 - Cash flows are principal and coupon only: no amortization, prepayment, early withdrawal or optionality.
 - EVE uses risk-free discounting with no commercial margin, and NMD is valued as principal only (the
   interest it pays is ignored), so base EVE overstates book equity. Read the change, not the level.
-- No NMD caps are built in. Basel limits the core share and average maturity by deposit type (SRP31), so
-  `core_pct` and `avg_life_years` are inputs you set within your supervisor's limits.
-- The 19 time buckets and the 15% level follow BCBS d368 and the Basel Framework (SRP31). Confirm them
-  against the current text before relying on either.
+- No NMD caps are built in. BCBS d368 (paragraph 115, Table 2) caps the core share and its average
+  maturity by deposit type: retail transactional 90% and 5 years, retail non-transactional 70% and 4.5
+  years, wholesale 50% and 4 years. `core_pct` and `avg_life_years` are inputs you must keep within those
+  caps (or your supervisor's).
+- The 19 time buckets (paragraph 101), the six scenarios (Annex 2) and the 15% of Tier 1 outlier level
+  (paragraph 88) were checked against the April 2016 standard on bis.org ([d368](https://www.bis.org/bcbs/publ/d368.pdf)). Later
+  consolidation into Basel Framework SRP31 may renumber paragraphs.
 - One shock per scenario at the short end for NII; no basis risk, no balance growth or mix change, and no
   second-round deposit behavior.
 
@@ -315,7 +323,7 @@ Steepener             208,044,214      3,420,741     +3.80
 Flattener             199,105,725     -5,517,749     -6.13
 Short rates up        196,134,674     -8,488,799     -9.43
 Short rates down      213,658,062      9,034,589    +10.04
-Outlier check (delta EVE loss > 15% of Tier 1): none breach  (a screen, not advice)
+Outlier test (worst of 6 Basel scenarios, delta EVE vs 15% of Tier 1): Short rates up -9.43% -> PASS  (a screen, not advice)
 
 12-month NII sensitivity (constant balance sheet, base NII $34,350,000)
 Scenario                      NII      Delta NII   % Base
@@ -397,9 +405,12 @@ LICENSE                  MIT
 ## IRRBB Sources and Floors
 
 The formulas, decay x = 4 and the 2016 USD sizes (200/300/150bp)
-are from BCBS d368, Annex 2 (cross-checked against the OSFI Guideline reproduction of the Annex). `irrbb_scenarios()` defaults to that 2016 calibration. The July 2024
+are from BCBS d368, Annex 2. The six scenarios, x = 4 and the rotation weights (0.65/0.9 and 0.8/0.6)
+were checked against the standard on bis.org ([d368](https://www.bis.org/bcbs/publ/d368.pdf)), and the USD shock sizes against
+Annex 2, Table 1 of the same PDF. `irrbb_scenarios()` defaults to that 2016 calibration. The July 2024
 recalibration (BCBS d578, in force 2026-01-01) is in `IRRBB_2024` as (parallel, short, long) per
-currency, from the KPMG Hong Kong summary table; USD becomes 200/300/225bp. Use
+currency, checked against Table 2 of SRP31.90 in the BIS
+[d578](https://www.bis.org/bcbs/publ/d578.pdf) annex; USD becomes 200/300/225bp. Use
 `irrbb_scenarios(*IRRBB_2024["USD"])`. Basel leaves post-shock rate floors to national supervisors (any
 floor at or below zero); `floor_shape` applies one, with `eba_floor` (-1% rising 5bp a year to 0 at
 20y, the EBA 2018 rule) as an example. Floors are not applied by default; `--irrbb --floor` applies `eba_floor` in the CLI and notes each scenario where it binds.

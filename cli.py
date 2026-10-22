@@ -26,7 +26,7 @@ def build_parser():
                    help="also report curve-based key-rate DV01 and curve scenarios "
                         "(semiannual bonds only; optional par-curve CSV, default data/treasury_par_curve.csv)")
     p.add_argument("--irrbb", action="store_true",
-                   help="with --curve, also report the six Basel IRRBB shock scenarios (USD calibration)")
+                   help="with --curve, also report the six Basel IRRBB shock scenarios (2024 calibration, see --currency)")
     p.add_argument("--floor", action="store_true",
                    help="with --irrbb, hold shocked rates at or above the EBA 2018 floor")
     p.add_argument("--balance-sheet", metavar="CSV",
@@ -34,7 +34,7 @@ def build_parser():
                         "(uses --curve's file if given; needs --tier1)")
     p.add_argument("--tier1", type=float, help="Tier 1 capital in dollars, for delta EVE as %% of Tier 1")
     p.add_argument("--currency", default="USD", choices=sorted(curve.IRRBB_2024),
-                   help="Basel 2024 shock calibration for the bank scenarios (default USD)")
+                   help="Basel 2024 shock calibration for the IRRBB scenarios (default USD)")
     p.add_argument("--outlier-pct", type=float, default=irrbb.OUTLIER_PCT,
                    help="outlier test threshold, percent of Tier 1 (default 15)")
     return p
@@ -62,20 +62,22 @@ def print_bank_report(a):
     print(f"{'Scenario':<18} {'EVE':>14} {'Delta EVE':>14} {'% Tier 1':>9}")
     for name, e, d, pct in rows:
         print(f"{name:<18} {e:>14,.0f} {d:>14,.0f} {pct:>+9.2f}")
+    worst, wpct, status = irrbb.outlier_test(rows, a.outlier_pct)
     hit = irrbb.outlier(rows, a.outlier_pct)
-    print(f"Outlier check (delta EVE loss > {a.outlier_pct:g}% of Tier 1): "
-          + (", ".join(hit) if hit else "none breach") + "  (a screen, not advice)")
+    print(f"Outlier test (worst of {len(rows)} Basel scenarios, delta EVE vs {a.outlier_pct:g}% of Tier 1): {worst} {wpct:+.2f}% "
+          f"-> {status}" + (f" ({', '.join(hit)})" if len(hit) > 1 else "") + "  (a screen, not advice)")
     nbase, nrows = irrbb.nii_table(lines, tenors, par, scen, floor)
     print(f"\n12-month NII sensitivity (constant balance sheet, base NII ${nbase:,.0f})")
     print(f"{'Scenario':<18} {'NII':>14} {'Delta NII':>14} {'% Base':>8}")
     for name, n, d in nrows:
-        print(f"{name:<18} {n:>14,.0f} {d:>14,.0f} {100*d/nbase:>+8.2f}")
+        pct = f"{100*d/nbase:>+8.2f}" if nbase else f"{'n/a':>8}"
+        print(f"{name:<18} {n:>14,.0f} {d:>14,.0f} {pct}")
     if a.charts:
         files = charts.write_eve_charts(a.charts, rows)
         print(f"\nWrote {len(files)} SVG charts (light and dark) to {a.charts}")
 
 
-def print_curve_report(bonds, path, irrbb=False, floor=False):
+def print_curve_report(bonds, path, irrbb=False, floor=False, currency="USD"):
     tenors, par = curve.load_par_curve(path)
     spreads = curve.base_spreads(bonds, tenors, par)
     print("\nCurve-based risk (par curve bootstrapped to discount factors; each bond carries a constant "
@@ -93,9 +95,10 @@ def print_curve_report(bonds, path, irrbb=False, floor=False):
     d, c = curve.effective_duration_convexity(bonds, tenors, par)
     print(f"\nEffective duration {d:.3f}   effective convexity {c:.1f}  (full repricing off the curve, +/-10bp)")
     if irrbb:
-        print("\nBasel IRRBB scenarios (USD: parallel 200bp, short 300bp, long 150bp; BCBS d368, "
-              + ("EBA floors on)" if floor else "no floors)"))
-        for name, shape in curve.irrbb_scenarios().items():
+        sizes = curve.IRRBB_2024[currency]
+        print(f"\nBasel IRRBB scenarios ({currency}: parallel {sizes[0]}bp, short {sizes[1]}bp, long {sizes[2]}bp; "
+              "Basel 2024 calibration, " + ("EBA floors on)" if floor else "no floors)"))
+        for name, shape in curve.irrbb_scenarios(*sizes).items():
             note = ""
             if floor:
                 floored = curve.floor_shape(shape, tenors, par)
@@ -167,7 +170,7 @@ def main(argv=None):
         print(f"{r['shock_bp']:>+6d} " + " ".join(f"{b:>12,.0f}" for b in r["buckets"]) +
               f" {r['bucket_sum']:>13,.0f} {r['full']:>13,.0f} {r['interaction']:>11,.0f}")
     if a.curve:
-        print_curve_report(bonds, a.curve, a.irrbb, a.floor)
+        print_curve_report(bonds, a.curve, a.irrbb, a.floor, a.currency)
     if a.csv:
         write_csv(a.csv, rows)
         print(f"\nWrote {a.csv}")

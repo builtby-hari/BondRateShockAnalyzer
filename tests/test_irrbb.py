@@ -52,6 +52,18 @@ class TestIrrbb(unittest.TestCase):
         self.assertGreater(pnl["Parallel down"], 0)
         self.assertLess(pnl["Short rates up"], 0)
 
+    def test_bis_worked_example(self):
+        # BCBS d368 Annex 2 examples: t = 3.5y, short = long = 100bp -> scalar 0.417, steepener +25.4, flattener -1.6
+        sc = irrbb_scenarios(100, 100, 100, tenors=(3.5,))
+        self.assertAlmostEqual(sc["Short rates up"][3.5], 41.7, places=1)
+        self.assertAlmostEqual(sc["Steepener"][3.5], 25.4, places=1)
+        self.assertAlmostEqual(sc["Flattener"][3.5], -1.6, places=1)
+
+    def test_rotations_use_absolute_shock_sizes(self):
+        # The rotation formulas take |short| and |long|, so a negative input size cannot flip them.
+        self.assertEqual(irrbb_scenarios(-200, -300, -150)["Steepener"], irrbb_scenarios()["Steepener"])
+        self.assertEqual(irrbb_scenarios(-200, -300, -150)["Flattener"], irrbb_scenarios()["Flattener"])
+
 
 class TestIrrbbSources(unittest.TestCase):
     def test_usd_2016_calibration(self):
@@ -59,7 +71,7 @@ class TestIrrbbSources(unittest.TestCase):
         self.assertEqual(IRRBB_USD, {"parallel_bp": 200, "short_bp": 300, "long_bp": 150})
 
     def test_2024_recalibration_table(self):
-        # BCBS d578 (July 2024, in force 2026-01-01), as tabulated in the KPMG HK summary:
+        # BCBS d578 (July 2024, in force 2026-01-01), SRP31.90 Table 2 in the BIS annex:
         # (parallel, short, long); every value a multiple of 25bp.
         self.assertEqual(IRRBB_2024["USD"], (200, 300, 225))
         self.assertEqual(IRRBB_2024["EUR"], (225, 350, 200))

@@ -219,8 +219,8 @@ def irrbb_scenarios(parallel_bp=200, short_bp=300, long_bp=150, x=4.0, tenors=IR
     return {
         "Parallel up": {t: float(parallel_bp) for t in tenors},
         "Parallel down": {t: -float(parallel_bp) for t in tenors},
-        "Steepener": {t: -0.65 * short[t] + 0.90 * long_[t] for t in tenors},
-        "Flattener": {t: 0.80 * short[t] - 0.60 * long_[t] for t in tenors},
+        "Steepener": {t: -0.65 * abs(short[t]) + 0.90 * abs(long_[t]) for t in tenors},
+        "Flattener": {t: 0.80 * abs(short[t]) - 0.60 * abs(long_[t]) for t in tenors},
         "Short rates up": dict(short),
         "Short rates down": {t: -v for t, v in short.items()},
     }

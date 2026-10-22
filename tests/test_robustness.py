@@ -7,9 +7,18 @@ import unittest
 import cli
 import fetch_curve
 from bondshock import Bond, load_portfolio, summary
-from bondshock.curve import (base_spreads, discount_factors, effective_duration_convexity,
-                             key_rate_dv01, load_par_curve, scenario_pnl, scenario_pnl_by_bond,
-                             SCENARIOS, curve_price, calibrated_spread)
+from bondshock.curve import (
+    SCENARIOS,
+    base_spreads,
+    calibrated_spread,
+    curve_price,
+    discount_factors,
+    effective_duration_convexity,
+    key_rate_dv01,
+    load_par_curve,
+    scenario_pnl,
+    scenario_pnl_by_bond,
+)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURVE = os.path.join(ROOT, "data", "treasury_par_curve.csv")
@@ -58,6 +67,10 @@ class TestCurveColumnsAndFloorNote(unittest.TestCase):
                 load_par_curve(path)
         finally:
             os.remove(path)
+
+    def test_bond_irrbb_uses_2024_calibration_and_currency(self):
+        self.assertIn("USD: parallel 200bp, short 300bp, long 225bp", run_cli_out(["--curve", "--irrbb"]))
+        self.assertIn("JPY: parallel 100bp", run_cli_out(["--curve", "--irrbb", "--currency", "JPY"]))
 
     def test_floor_note_only_when_floor_binds(self):
         low = write_curve("as_of,tenor_years,par_yield\n" + "".join(

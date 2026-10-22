@@ -47,6 +47,25 @@ class TestEve(unittest.TestCase):
         self.assertIn("Parallel up", flagged)
         self.assertNotIn("Parallel down", flagged)  # gains are never flagged
 
+    def test_outlier_test_pass_and_breach(self):
+        sc = curve.irrbb_scenarios(*curve.IRRBB_2024["USD"])
+        lines = irrbb.load_balance_sheet(SHEET)
+        _, rows = irrbb.eve_table(lines, TENORS, PAR, sc, tier1=90e6)
+        worst, pct, status = irrbb.outlier_test(rows)
+        self.assertEqual(worst, min(rows, key=lambda r: r[3])[0])
+        self.assertEqual(status, "PASS")
+        self.assertGreater(pct, -15.0)
+        _, tight = irrbb.eve_table(lines, TENORS, PAR, sc, tier1=10e6)
+        worst, pct, status = irrbb.outlier_test(tight)
+        self.assertEqual(status, "BREACH")
+        self.assertLess(pct, -15.0)
+        self.assertIn(worst, irrbb.outlier(tight))
+
+    def test_outlier_test_boundary_is_strict(self):
+        rows = [("Parallel up", 0.0, -15.0, -15.0), ("Parallel down", 0.0, 15.0, 15.0)]
+        self.assertEqual(irrbb.outlier_test(rows), ("Parallel up", -15.0, "PASS"))
+        self.assertEqual(irrbb.outlier_test(rows, 14.9)[2], "BREACH")
+
     def test_floor_limits_down_shock(self):
         low = [0.001] * len(PAR)
         down = {"Parallel down": {t: -200.0 for t in curve.IRRBB_TENORS}}
@@ -96,7 +115,7 @@ class TestGapAndCli(unittest.TestCase):
         with contextlib.redirect_stdout(buf):
             cli.main(["--balance-sheet", SHEET, "--tier1", "90000000"])
         out = buf.getvalue()
-        for s in ("Repricing gap", "EVE sensitivity", "12-month NII", "Steepener", "Outlier check"):
+        for s in ("Repricing gap", "EVE sensitivity", "12-month NII", "Steepener", "Outlier test"):
             self.assertIn(s, out)
 
     def test_cli_requires_tier1(self):
