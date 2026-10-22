@@ -14,7 +14,7 @@ Standard library only (Python 3.9+). No `pip install` needed.
 
 ## Contents
 
-- [Hero Chart](#portfolio-pnl-under-parallel-shocks)
+- [Hero Chart](#portfolio-pl-under-parallel-shocks)
 - [Results at a Glance](#results-at-a-glance)
 - [How It Works](#how-it-works)
 - [Quickstart](#quickstart)
